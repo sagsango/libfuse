@@ -18,6 +18,18 @@
  * \include hello.c
  */
 
+/*
+XXX: @ss
+	Here we have a dummy filename (which does not exist anywhere)
+        And have dummy content.
+        And have dummy attr.
+	So for evey type of operation we are just giving dummy value.
+
+
+	We can have our google-drive, github & dropbox files, just 
+        implement these API for thoese.
+*/
+
 
 #define FUSE_USE_VERSION 31
 
@@ -91,9 +103,9 @@ static int hello_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 	if (strcmp(path, "/") != 0)
 		return -ENOENT;
 
-	filler(buf, ".", NULL, 0, 0);
-	filler(buf, "..", NULL, 0, 0);
-	filler(buf, options.filename, NULL, 0, 0);
+	filler(buf, ".", NULL, 0, FUSE_FILL_DIR_DEFAULTS);
+	filler(buf, "..", NULL, 0, FUSE_FILL_DIR_DEFAULTS);
+	filler(buf, options.filename, NULL, 0, FUSE_FILL_DIR_DEFAULTS);
 
 	return 0;
 }
